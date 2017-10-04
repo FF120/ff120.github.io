@@ -89,7 +89,7 @@
 <meta name="description" content="霍夫曼编码是一种无损编码方法，它是无损编码方案中最优的，基本思想是给出现频率高的字符以较短的编码，给出现频率低的字符以长的编码。本文将介绍霍夫曼编码的算法步骤和具体实现。">
 <meta name="keywords" content="霍夫曼编码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法专题_霍夫曼编码">
+<meta property="og:title" content="算法专题_霍夫曼编码(哈夫曼编码)">
 <meta property="og:url" content="http://ff120.coding.me/2017/05/06/算法专题/算法专题_霍夫曼编码/index.html">
 <meta property="og:site_name" content="FEI&#39;s Blog">
 <meta property="og:description" content="霍夫曼编码是一种无损编码方法，它是无损编码方案中最优的，基本思想是给出现频率高的字符以较短的编码，给出现频率低的字符以长的编码。本文将介绍霍夫曼编码的算法步骤和具体实现。">
@@ -104,9 +104,9 @@
 <meta property="og:image" content="http://ff120.coding.me/2017/05/06/算法专题/算法专题_霍夫曼编码/2017-05-06_235547.png">
 <meta property="og:image" content="http://ff120.coding.me/2017/05/06/算法专题/算法专题_霍夫曼编码/2017-05-06_235729.png">
 <meta property="og:image" content="http://ff120.coding.me/2017/05/06/算法专题/算法专题_霍夫曼编码/2017-05-07_000144.png">
-<meta property="og:updated_time" content="2017-07-23T00:39:48.949Z">
+<meta property="og:updated_time" content="2017-10-03T10:23:47.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法专题_霍夫曼编码">
+<meta name="twitter:title" content="算法专题_霍夫曼编码(哈夫曼编码)">
 <meta name="twitter:description" content="霍夫曼编码是一种无损编码方法，它是无损编码方案中最优的，基本思想是给出现频率高的字符以较短的编码，给出现频率低的字符以长的编码。本文将介绍霍夫曼编码的算法步骤和具体实现。">
 <meta name="twitter:image" content="http://ff120.coding.me/2017/05/06/算法专题/算法专题_霍夫曼编码/2017-05-06_230648.png">
 
@@ -131,7 +131,7 @@
 
   <link rel="canonical" href="http://ff120.coding.me/2017/05/06/算法专题/算法专题_霍夫曼编码/"/>
 
-  <title> 算法专题_霍夫曼编码 | FEI's Blog </title>
+  <title> 算法专题_霍夫曼编码(哈夫曼编码) | FEI's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +304,7 @@
             
             
               
-                算法专题_霍夫曼编码
+                算法专题_霍夫曼编码(哈夫曼编码)
               
             
           </h1>
@@ -357,7 +357,7 @@
 
           
           
-             <span id="/2017/05/06/算法专题/算法专题_霍夫曼编码/" class="leancloud_visitors" data-flag-title="算法专题_霍夫曼编码">
+             <span id="/2017/05/06/算法专题/算法专题_霍夫曼编码/" class="leancloud_visitors" data-flag-title="算法专题_霍夫曼编码(哈夫曼编码)">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -379,7 +379,10 @@
       
 
       
-        <p>霍夫曼编码是一种无损编码方法，它是无损编码方案中最优的，基本思想是给出现频率高的字符以较短的编码，给出现频率低的字符以长的编码。本文将介绍霍夫曼编码的算法步骤和具体实现。 <a id="more"></a> <strong>前缀码</strong>： 没有任何一个编码是其他编码的前缀，这样的一套编码体系叫做前缀码。例如a的编码是010，那么不会存在编码是0，01，0101，0100，010**的字符。前缀码确保了解码时的唯一性。</p>
+        <p>霍夫曼编码是一种无损编码方法，它是无损编码方案中最优的，基本思想是给出现频率高的字符以较短的编码，给出现频率低的字符以长的编码。本文将介绍霍夫曼编码的算法步骤和具体实现。</p>
+<a id="more"></a>
+<h2 id="二叉霍夫曼编码">二叉霍夫曼编码</h2>
+<p><strong>前缀码</strong>： 没有任何一个编码是其他编码的前缀，这样的一套编码体系叫做前缀码。例如a的编码是010，那么不会存在编码是0，01，0101，0100，010**的字符。前缀码确保了解码时的唯一性。</p>
 <p>霍夫曼编码的算法步骤： 1. 统计每个字符出现的频率，按照频率从大到小排序。 2. 找到出现频率最小的两个字符，把这两个字符作为左右孩子，添加一个节点作为它们共同的父亲节点，父亲节点的值是这两个字符频率的和。 3. 重复步骤2直到总概率为1为之。 4. 以上步骤构造了一颗二叉树，二叉树根的概率是1.从根开始，递归的标记每个节点，左孩子标记为0，右孩子标记为1，直到到达叶节点。 5. 从跟出发到每个叶节点经过的0–1路径就是该字符的编码。</p>
 <p>下面看一个具体的例子： 假设一个文件中只包含a,b,c,d,e,f六种字符，它们的出现频率如下表所示：</p>
 <table>
@@ -438,7 +441,9 @@
 </tr>
 </tbody>
 </table>
-<p>这就是整个霍夫曼编码过程。除了使用二进制编码，其实还可以使用多种不同的进制编码，只要扩展分支的数目就可以了。举例来说，还是上面的例子，如果编码的数字允许使用0，1，2三个数字。那么霍夫曼编码的步骤变为：</p>
+<p>这就是整个霍夫曼编码过程。除了使用二进制编码，其实还可以使用多种不同的进制编码，只要扩展分支的数目就可以了。</p>
+<h2 id="n叉霍夫曼编码">N叉霍夫曼编码</h2>
+<p>举例来说，还是上面的例子，如果编码的数字允许使用0，1，2三个数字。那么霍夫曼编码的步骤变为：</p>
 <ol style="list-style-type: decimal">
 <li>设字符数量为K，则第一次选择num = <code>K-2*[(K-1)/2]</code>,[]代表下取整的意思。这里K=6，所以第一次寻找2个频率最低的字符，e,f.如果num=0,取2，如果num=1,取3.</li>
 <li>把找出来的字符的概率合并作为新的一项加入到队列中，原来的删掉，继续用1中的方法寻找直到最后剩下三个为止。</li>
@@ -467,7 +472,9 @@
 </tbody>
 </table>
 <p>于此，我们可以很容易的推广到N叉霍夫曼编码，思想是一样的，都是贪心法和前缀码。</p>
-<p>下面给出二叉霍夫曼编码的C++实现的版本： <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="二叉哈夫曼编码的实现">二叉哈夫曼编码的实现</h2>
+<p>下面给出二叉霍夫曼编码的C++实现的版本：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></div><div class="line">    <span class="keyword">int</span> label; <span class="comment">// 节点的编码， 0 或者 1</span></div><div class="line">    <span class="keyword">char</span> c; <span class="comment">// 节点表示的字符</span></div><div class="line">    Node* left;</div><div class="line">    Node* right;</div><div class="line">    Node() : label(<span class="number">-1</span>),left(<span class="literal">nullptr</span>), right(<span class="literal">nullptr</span>)&#123;&#125;</div><div class="line">    Node(<span class="keyword">char</span> cc) : label(<span class="number">-1</span>), c(cc),left(<span class="literal">nullptr</span>), right(<span class="literal">nullptr</span>)&#123;&#125;</div><div class="line">    Node(<span class="keyword">int</span> la) : label(la),left(<span class="literal">nullptr</span>), right(<span class="literal">nullptr</span>)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 输出字符的编码</div><div class="line"> * @param root </div><div class="line"> * @param s </div><div class="line"> * @param re </div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Node* root,<span class="built_in">string</span> &amp;s,<span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="built_in">string</span>&gt; &amp;re)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(!root) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">if</span>(!root-&gt;left &amp;&amp; !root-&gt;right)&#123;</div><div class="line">        re[root-&gt;c] = s + to_string(root-&gt;label);</div><div class="line">        s.clear();</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        s += to_string( root-&gt;label );</div><div class="line">        <span class="function"><span class="built_in">string</span> <span class="title">s1</span><span class="params">(s)</span></span>;</div><div class="line">        <span class="function"><span class="built_in">string</span> <span class="title">s2</span><span class="params">(s)</span></span>;</div><div class="line">        <span class="keyword">if</span>(root-&gt;left) dfs(root-&gt;left,s1,re);</div><div class="line">        <span class="keyword">if</span>(root-&gt;right) dfs(root-&gt;right,s2,re);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 哈夫曼编码</div><div class="line"> * @param source 每个字符出现的频率</div><div class="line"> * @return  每个字符对应的二进制编码</div><div class="line"> */</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="built_in">string</span>&gt; huff(<span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">double</span>&gt; &amp;source)&#123;</div><div class="line">    <span class="comment">// 1. 初始化数据结构</span></div><div class="line">    <span class="built_in">multimap</span>&lt;<span class="keyword">double</span>,Node*&gt; tree;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> iter : source)&#123;</div><div class="line">        Node *newNode = <span class="keyword">new</span> Node(iter.first);</div><div class="line">        tree.insert(make_pair(iter.second,newNode));</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 2. 构建哈夫曼树</span></div><div class="line">    Node* newNode;</div><div class="line">    <span class="keyword">while</span>( tree.size() &gt; <span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">auto</span> ff = tree.begin();</div><div class="line">        <span class="keyword">auto</span> ss = ++(tree.begin());</div><div class="line">        newNode = <span class="keyword">new</span> Node();</div><div class="line">        newNode-&gt;left = ff-&gt;second;</div><div class="line">        ff-&gt;second-&gt;label = <span class="number">0</span>; <span class="comment">// 左子树编码为0</span></div><div class="line">        newNode-&gt;right = ss-&gt;second;</div><div class="line">        ss-&gt;second-&gt;label = <span class="number">1</span>; <span class="comment">// 右子树编码为1</span></div><div class="line">        tree.insert(make_pair(ff-&gt;first+ss-&gt;first,newNode));</div><div class="line">        tree.erase(ff);</div><div class="line">        tree.erase(ss);</div><div class="line">    &#125;</div><div class="line">    newNode-&gt;label = <span class="number">0</span>; <span class="comment">// 根节点编码为0</span></div><div class="line"></div><div class="line">    <span class="comment">// 3. 输出每个叶子节点的编码</span></div><div class="line">    Node* root = newNode;</div><div class="line">    <span class="built_in">string</span> tmp = <span class="string">""</span>;</div><div class="line">    <span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="built_in">string</span>&gt; re;</div><div class="line">    dfs(root,tmp,re);</div><div class="line">    <span class="keyword">return</span> re;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -604,7 +611,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">146</span>
+              <span class="site-state-item-count">144</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -612,7 +619,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -731,7 +738,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉霍夫曼编码"><span class="nav-number">1.</span> <span class="nav-text">二叉霍夫曼编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n叉霍夫曼编码"><span class="nav-number">2.</span> <span class="nav-text">N叉霍夫曼编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉哈夫曼编码的实现"><span class="nav-number">3.</span> <span class="nav-text">二叉哈夫曼编码的实现</span></a></li></ol></div>
             
           </div>
         </section>
@@ -850,7 +857,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'hexo-blog-ff120';
       var disqus_identifier = '2017/05/06/算法专题/算法专题_霍夫曼编码/';
-      var disqus_title = "算法专题_霍夫曼编码";
+      var disqus_title = "算法专题_霍夫曼编码(哈夫曼编码)";
       var disqus_url = 'http://ff120.coding.me/2017/05/06/算法专题/算法专题_霍夫曼编码/';
 
       function run_disqus_script(disqus_script){

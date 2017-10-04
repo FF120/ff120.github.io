@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="需要掌握的一些手写代码">
+<meta name="description" content="【翻转链表】【删除重复元素】【判断有环】【合并链表】【复杂链表的复制】">
 <meta name="keywords" content="ACM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手写代码">
+<meta property="og:title" content="手写代码-链表">
 <meta property="og:url" content="http://ff120.coding.me/2017/09/19/手写代码-链表/index.html">
 <meta property="og:site_name" content="FEI&#39;s Blog">
-<meta property="og:description" content="需要掌握的一些手写代码">
+<meta property="og:description" content="【翻转链表】【删除重复元素】【判断有环】【合并链表】【复杂链表的复制】">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-23T10:14:47.051Z">
+<meta property="og:updated_time" content="2017-09-28T14:31:59.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="手写代码">
-<meta name="twitter:description" content="需要掌握的一些手写代码">
+<meta name="twitter:title" content="手写代码-链表">
+<meta name="twitter:description" content="【翻转链表】【删除重复元素】【判断有环】【合并链表】【复杂链表的复制】">
 
 
 
@@ -120,7 +120,7 @@
 
   <link rel="canonical" href="http://ff120.coding.me/2017/09/19/手写代码-链表/"/>
 
-  <title> 手写代码 | FEI's Blog </title>
+  <title> 手写代码-链表 | FEI's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -293,7 +293,7 @@
             
             
               
-                手写代码
+                手写代码-链表
               
             
           </h1>
@@ -346,7 +346,7 @@
 
           
           
-             <span id="/2017/09/19/手写代码-链表/" class="leancloud_visitors" data-flag-title="手写代码">
+             <span id="/2017/09/19/手写代码-链表/" class="leancloud_visitors" data-flag-title="手写代码-链表">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -368,7 +368,7 @@
       
 
       
-        <p>需要掌握的一些手写代码</p>
+        <p>【翻转链表】【删除重复元素】【判断有环】【合并链表】【复杂链表的复制】</p>
 <a id="more"></a>
 <h3 id="反转链表"><a href="http://lintcode.com/zh-cn/problem/reverse-linked-list/" target="_blank" rel="external">反转链表</a></h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* 1. 如果是空链表，或者只有一个元素，直接返回头节点</div><div class="line">* 2. pre --&gt; head, iter --&gt; head-&gt;next, pre-&gt;next = nullptr;</div><div class="line">* pre 指向第一个元素，iter指向第二个节点(可能为空，为空说明到达了链表的结尾)，断开前两个节点之间的连接</div><div class="line">* 3. while(iter!=nullptr) 转换pre iter指向的节点的连接。</div><div class="line">* 首先用一个新的节点变量存储iter的下一个节点信息，node = iter-&gt;next</div><div class="line">* iter-&gt;next = pre;</div><div class="line">* pre = iter;</div><div class="line">* iter = node;</div><div class="line">*/</div><div class="line"><span class="function">ListNode *<span class="title">reverse</span><span class="params">(ListNode *head)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(!head || !head-&gt;next) <span class="keyword">return</span> head;</div><div class="line">    ListNode* pre = head;</div><div class="line">    ListNode* iter = head-&gt;next;</div><div class="line">    pre-&gt;next = <span class="literal">nullptr</span>;</div><div class="line">    <span class="keyword">while</span>(iter)&#123;</div><div class="line">        ListNode* next = iter-&gt;next;</div><div class="line">        iter-&gt;next = pre;</div><div class="line">        pre = iter;</div><div class="line">        iter = next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> pre;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -781,7 +781,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'hexo-blog-ff120';
       var disqus_identifier = '2017/09/19/手写代码-链表/';
-      var disqus_title = "手写代码";
+      var disqus_title = "手写代码-链表";
       var disqus_url = 'http://ff120.coding.me/2017/09/19/手写代码-链表/';
 
       function run_disqus_script(disqus_script){
